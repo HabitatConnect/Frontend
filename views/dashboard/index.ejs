@@ -12,11 +12,23 @@
 
     <div class="row">
         <% if(announcements.length > 0) { for(var i=0; i < announcements.length; i++) { %>
-            <div class="col-sm-3-mb-4">
+            <div class="col-sm-3 mb-4">
                 <div class="card border-primary" style="min-height: 210px">
                     <a href="/dashboard/item/<%= announcements[i]._id %>" class="card-body text-decoration-none">
-                        <h5 class="card-title"><%= announcements[i].title %></h5>
-                        <p class="card-text"><%= announcements[i].body %></p>
+                        <h5 class="card-title">
+                            <% if (announcements[i].title.length > 30) { %>
+                                <%= announcements[i].title.slice(0, 30) + '...' %>
+                            <% } else { %>
+                                <%= announcements[i].title %>
+                            <% } %>
+                        </h5>
+                        <p class="card-text">
+                            <% if (announcements[i].body.length > 50) { %>
+                                <%= announcements[i].body.slice(0, 50) + '...' %>
+                            <% } else { %>
+                                <%= announcements[i].body %>
+                            <% } %>
+                        </p>
                     </a>
                 </div>
             </div>
