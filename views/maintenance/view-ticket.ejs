@@ -1,0 +1,55 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/maintenance">Maintenance Request page</a></li>
+                    <li class="breadcrumb-item active"><%= ticket.title %></li>
+                </ol>
+            </nav>
+
+            <div class="col d-flex justify-content-between align-item-center">
+                <h1 class="h3">View Ticket</h1>
+
+                <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <form action="/maintenance/item/<%= ticketID %>?_method=PUT" method="POST" class="col-md-10">
+            <div class="form-group mb-4">
+                <input type="text" class="form-control fw-bold border-0 fs-4" id="title" name="title" value="<%= ticket.title %>" placeholder="Title">
+            </div>
+
+            <div class="form-group mb-4">
+                <textarea class="form-control pt-5 fs-4" name="body" id="body" rows="10" placeholder="Description"><%= ticket.body %></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--modal delete announcement-->
+<div class="modal fade" tabindex="-1" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Are you sure you want to delete this ticket?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="/maintenance/item-delete/<%= ticketID %>?_method=DELETE" method="POST" class="position-relative">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-primary">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

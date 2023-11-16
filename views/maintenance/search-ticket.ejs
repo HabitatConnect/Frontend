@@ -1,0 +1,13 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row">
+        <% if(searchResults != '') { %>
+            <% searchResults.forEach(function(ticket, index) { %>
+                <a href="/maintenance/item/<%= ticket._id %>">
+                    <h4><%= ticket.title %></h4>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No items found</p>
+        <% } %>
+    </div>
+</div>

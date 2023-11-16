@@ -1,0 +1,32 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/maintenance">Maintenance Requests page</a></li>
+                    <li class="breadcrumb-item active">Maintenance Request</li>
+                </ol>
+            </nav>
+
+            <div class="col d-flex justify-content-between align-item-center">
+                <h1 class="h3">Submit Ticket</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <form action="/maintenance/add-ticket" method="POST" class="col-md-10">
+            <div class="form-group mb-4">
+                <input type="text" class="form-control fw-bold border-0 fs-4" id="title" name="title" placeholder="Title" required>
+            </div>
+
+            <div class="form-group mb-4">
+                <textarea class="form-control pt-5 fs-4" name="body" id="body" rows="10" placeholder="Description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Submit Ticket</button>
+            </div>
+        </form>
+    </div>
+</div>
