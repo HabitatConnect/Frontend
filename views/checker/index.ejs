@@ -9,12 +9,23 @@
         <% if(washing_machines.length > 0) { for(var i=0; i < washing_machines.length; i++) { %>
             <div class="col-sm-3 mb-4">
                 <div class="card border-primary" style="min-height: 210px">
-                    <a href="/checker/item/<%= washing_machines[i]._id %>" class="card-body text-decoration-none">
-                        <h5 class="card-title"><%= washing_machines[i]._id%></h5>
-                        <p class="card-text"><%= washing_machines[i].status %></p>
-                    </a>
+                    <h5 class="card-title"><%= washing_machines[i]._id%></h5>
+                    <p class="card-text"><%= washing_machines[i].status %></p>
                 </div>
             </div>
+
+            <div class="row justify-content-center">
+                <form action="/checker/<%= washing_machines[i]._id %>/update-status" method="POST" class="col-md-10">
+                    <input type="hidden" name="status" value="Use">
+                    <button type="submit" class="btn btn-primary btn-lg">Use</button>
+                </form>
+
+                <form action="/checker/<%= washing_machines[i]._id %>/update-status" method="POST" class="col-md-10">
+                    <input type="hidden" name="status" value="Finish">
+                    <button type="submit" class="btn btn-primary btn-lg">Finish</button>
+                </form>
+            </div>
+
         <% }} else { %>
             
             <div class="row">
