@@ -74,21 +74,21 @@ h1, h2, h3, h4, h5, h6 {
     /* display only on big screens*/
     .home {
         background:
-        url('../img/hanyang-habitat.png') left bottom no-repeat,
-        url('../img/hanyang-habitat.png') right bottom no-repeat,
+        /* url('../img/hanyang-habitat.png') left bottom no-repeat,
+        url('../img/hanyang-habitat.png') right bottom no-repeat, */
         var(--background-color);
     }
 }
 
 .home-title::before{
-    content: url('../img/hanyang-habitat.png');
+   /* content: url('../img/hanyang-habitat.png'); */
     position: absolute;
     left: -300px;
     top: -20px;
 }
 
 .home-title::after{
-    content: url('../img/hanyang-habitat.png');
+    /* content: url('../img/hanyang-habitat.png'); */
     position: absolute;
     right: -200px;
     bottom: -200px;
