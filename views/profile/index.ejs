@@ -1,0 +1,24 @@
+<!--Created by Laura, change as you wish-->
+
+<h1>Just giving you guys some ideas of the things you can take from backend</h1>
+<p>Can take every attribute from User (models/user)</p>
+
+<div class="col">
+    <p> <%= user.roomNumber %></p>
+    <p>Those who register with google will have automatic pfp taken from google. Those who do locally don't have that field in the DB</p>
+    <p>You may need to set a default (go to models/User and set acordingly)</p>
+
+    <p>I tried to show the pfp and birthdate but are not showing...
+        In theory, you should be able to use them since you can use username and roomNumber.
+        Basically, backend is correctly sendind the information</p>
+</div>
+
+
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Hello, <%= user.username %></h1>
+        </div>
+    </div>
+      
+</div>
