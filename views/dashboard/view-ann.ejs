@@ -20,6 +20,14 @@
 
     <div class="row justify-content-center">
         <form action="/dashboard/item/<%= annID %>?_method=PUT" method="POST" class="col-md-10">
+
+            <p>Add here who created the announcement + hide update/delete buttons
+                
+                <p><%= announcement.user.username %></p>
+
+                You can also access profileImage or change backend as you want to do that
+            </p>
+
             <div class="form-group mb-4">
                 <input type="text" class="form-control fw-bold border-0 fs-4" id="title" name="title" value="<%= announcement.title %>" placeholder="Title">
             </div>
