@@ -20,5 +20,30 @@
             <h1>Hello, <%= user.username %></h1>
         </div>
     </div>
+
+
+    <form action="/profile/update" method="POST" class="col-md-10">
+
+        <div class="form-group mb-4">
+            <textarea class="form-control pt-5 fs-4" name="username" id="username" rows="10" placeholder="Username"><%= user.username %></textarea>
+        </div>
+
+        <div class="form-group mb-4">
+            <textarea class="form-control pt-5 fs-4" name="roomNumber" id="roomNumber" rows="10" placeholder="Room Number"><%= user.roomNumber %></textarea>
+        </div>
+
+        <!-- birthdate as well. atm, can only update those 3 fields. I don't think is worth doing the rest (at least not worth on BE)
+        I could also try to update profileImages, but I dont know how do the user inputs that from frontend... You can find the backend code
+        for update and see if you wanna implement that-->
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+        </div>
+
+    </form>
       
+
+
+
+
 </div>
