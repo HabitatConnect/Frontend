@@ -1,0 +1,27 @@
+<div class="container-fluid container-fluid-custom py-md-5 mb-5">
+    <main>
+        <div class="row py-md-5 text-center justify-content-center">
+
+            <div class="col-md-12 col-lg-6 mb-6 mb-md-0">
+                <h1 class="display-2 fw-bold mb-4 position-relative home-title">
+                    Log In
+                </h1>
+                <form action="/login" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+                </form>
+                <a href="/auth/google/login" class="btn btn-outline-primary btn-lg mt-3">
+                    Log In with Google
+                </a>
+            </div>
+
+        </div>
+    </main>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-fluid container-fluid-custom py-md-5 mb-5">
+    <main>
+        <div class="row py-md-5 text-center justify-content-center">
+
+            <div class="col-md-12 col-lg-6 mb-6 mb-md-0">
+                <h1 class="display-2 fw-bold mb-4 position-relative home-title">
+                    Complete Your Profile
+                </h1>
+
+                <% if (errors && errors.length > 0) { %>
+                    <div class="alert alert-danger" role="alert">
+                      <% errors.forEach(error => { %>
+                        <p><%= error %></p>
+                      <% }); %>
+                    </div>
+                <% } %>
+
+                <form action="/auth/complete-profile" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roomNumber" class="form-label">Room Number</label>
+                        <input type="text" class="form-control" id="roomNumber" name="roomNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">Birthdate</label>
+
+                        <!-- change this. if we put type = date, it takes the browser,
+                        in my case, it takes dd/mm/yyyy. but we want mm/dd/yyyy
+                        in backend, we expect yyyy-mm-dd input so make sure this works
+                        
+                        right now, I commented the birthdate validation since I am wasting my time
+                        I leave this to you guys since I already did enough-->
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Complete Profile</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+</div>
