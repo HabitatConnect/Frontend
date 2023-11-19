@@ -96,11 +96,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Custom styles for vertical navbar */
 .nav {
-    width: 200px; /* Set the width of the vertical navbar */
-    padding-left: 15px; /* Optional: Add some left padding */
-    border-right: 1px solid #dee2e6; /* Optional: Add a border to separate from content */
+    width: 267px;
+    padding-left: 5px;
+    border-right: 1px solid #d3d3d3;
 }
 
 .nav-link {
-    color: #495057; /* Optional: Set the text color */
+    color: #495057;
 }
