@@ -15,12 +15,12 @@
             </div>
 
             <div class="row justify-content-center">
-                <form action="/checker/<%= washing_machines[i]._id %>/update-status" method="POST" class="col-md-10">
+                <form action="/checker/<%= washing_machines[i]._id %>/update-status?_method=PUT" method="POST" class="col-md-10">
                     <input type="hidden" name="status" value="Use">
                     <button type="submit" class="btn btn-primary btn-lg">Use</button>
                 </form>
 
-                <form action="/checker/<%= washing_machines[i]._id %>/update-status" method="POST" class="col-md-10">
+                <form action="/checker/<%= washing_machines[i]._id %>/update-status?_method=PUT" method="POST" class="col-md-10">
                     <input type="hidden" name="status" value="Finish">
                     <button type="submit" class="btn btn-primary btn-lg">Finish</button>
                 </form>
