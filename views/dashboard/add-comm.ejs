@@ -1,0 +1,36 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/item/<%= annID %>">View Announcement</a></li>
+                    <li class="breadcrumb-item active">Add Comment</li>
+                </ol>
+            </nav>
+
+            <div class="col d-flex justify-content-between align-item-center">
+                <h1 class="h3">Add Comment</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <% if (error) { %>
+            <div class="alert alert-danger" role="alert"><%= error %></div>
+        <% } %>
+
+        <form action="/dashboard/item/<%= annID %>/comm" method="POST" class="col-md-10">
+            <div class="form-group mb-4">
+                <label for="text" class="form-label fw-bold fs-4">Comment</label>
+                <textarea class="form-control pt-5 fs-4" name="text" id="text" rows="10" placeholder="Write your comment here" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Post Comment</button>
+            </div>
+
+        </form>
+    </div>
+</div>
