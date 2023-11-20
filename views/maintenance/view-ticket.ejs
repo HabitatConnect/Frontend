@@ -10,15 +10,11 @@
 
             <div class="col d-flex justify-content-between align-item-center">
                 <h1 class="h3">View Ticket</h1>
-
-                <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">
-                    Delete
-                </button>
             </div>
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row">
 
         <% if (error) { %>
             <div class="alert alert-danger" role="alert"><%= error %></div>
@@ -30,11 +26,14 @@
             </div>
 
             <div class="form-group mb-4">
-                <textarea class="form-control pt-5 fs-4" name="body" id="body" rows="10" placeholder="Description"><%= ticket.body %></textarea>
+                <textarea class="form-control fs-4" name="body" id="body" rows="10" placeholder="Description"><%= ticket.body %></textarea>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">
+                    Close
+                </button>
             </div>
         </form>
     </div>
@@ -46,13 +45,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Are you sure you want to delete this ticket?</p>
+          <p>Are you sure you want to close this ticket?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <form action="/maintenance/item-delete/<%= ticketID %>?_method=DELETE" method="POST" class="position-relative">
             <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-primary">Delete</button>
+            <button type="submit" class="btn btn-primary">Close</button>
           </form>
         </div>
       </div>
