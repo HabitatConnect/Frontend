@@ -1,25 +1,35 @@
-<div class="container-fluid container-fluid-custom pb-5 mb-5">
-    <div class="row mb-4">
+<div class="container-fluid container-fluid-custom pb-5">
+    <div class="row">
         <div class="col">
             <h1>Maintenance Request</h1>
+        </div>
+        <% if(tickets.length > 0){%>
+            <div class="col text-end">
+                <a href="/maintenance/add-ticket" class="btn btn-primary">
+                    Create new Request here
+                </a>
+            </div>
+        <% } %>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-3 mb-4 col-md-10">
-            <% if(tickets.length> 0) { for(var i=0; i < tickets.length; i++) { %>
-            <h5 class="text-dark">Below is your open request that is being worked on. Please be patient.</h5>
-            <h5 class="text-dark">In the meantime you can either update or close the request</h5></br>
-            <table class="table">
+        <div class="col-sm-3 mb-4 col-md-12">            
+            <% if(tickets.length > 0){%>
+            <h5 class="text-dark">Below are your open requests that are being worked on. Please be patient.</br>
+            In the meantime you can either update or close the request.</h5></br>   
+            
+            <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Text</th>
+                    <tr class="table-danger">
+                        <th scope="col" style="width: 5%">#</th>
+                        <th scope="col" style="width: 30%">Title</th>
+                        <th scope="col" style="width: 60%">Description</th>
                         <th scope="col">Update</th>
                     </tr>
                 </thead>
-            
+                <% } %>
+                <% if(tickets.length> 0) { for(var i=0; i < tickets.length; i++) { %>
                 <tbody>
                     <tr>
                         <th scope="row"><%= i+1%></th>
@@ -31,8 +41,8 @@
                             <% } %>
                         </td>
                         <td>
-                            <% if (tickets[i].body.length > 50) { %>
-                                <%= tickets[i].body.slice(0, 50) + '...' %>
+                            <% if (tickets[i].body.length > 80) { %>
+                                <%= tickets[i].body.slice(0, 80) + '...' %>
                             <% } else { %>
                                 <%= tickets[i].body %>
                             <% } %>
@@ -46,10 +56,46 @@
                             </div>
                         </td>
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
+            <!-- pagination -->
+            <% if(tickets.length > 0){ %>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mt-5">
+                        <% if(current == 1){ %>
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <% } else { %>
+                            <li class="page-item"><a class="page-link" href="/maintenance">1</a></li>
+                        <% } %>
+                        <% var i = (Number(current) > 5 ? Number(current) - 4: 1) %>
+                        <% if (i !== 1) { %>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                        <% } %>
+                        <% for (; i <= (Number(current)+4) && i <= pages; i++) { %>
+                            <% if(i == current) { %>
+                                <li class="page-item"><a class="page-link" href="#"><%= i %></a></li>
+                            <% } else { %>
+                                <li class="page-item"><a class="page-link" href="/maintenance/?page=<%= i %>"><%= i %></a></li>
+                            <% } %>
+                            <% if (i == Number(current)+4 && i < pages){ %>
+                                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <% } %>
+                            <% if(i == Number(current)+4 && i < pages) { %>
+                                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <% } %>
+                        <% } %>
+                        <% if(current == pages) { %>
+                            <li class="page-item disabled"><a class="page-link" href="#">Last</a></li>
+                        <% } else { %>
+                            <li class="page-item"><a class="page-link" href="/maintenance/?page=<%= pages %>">Next</a></li>
+                        <% } %>
+                    </ul>
+                </nav>
+            <% } %>
         </div>
-        <% }} else { %>
+
+        <% } else { %>
             <div class="row">
                 <div class="col mt-md-4">
                     <h2>You do not have any open requests at the moment</h2></br>
