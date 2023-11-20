@@ -41,8 +41,8 @@
                             <% } %>
                         </td>
                         <td>
-                            <% if (tickets[i].body.length > 80) { %>
-                                <%= tickets[i].body.slice(0, 80) + '...' %>
+                            <% if (tickets[i].body.length > 65) { %>
+                                <%= tickets[i].body.slice(0, 65) + '...' %>
                             <% } else { %>
                                 <%= tickets[i].body %>
                             <% } %>
