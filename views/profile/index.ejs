@@ -1,23 +1,7 @@
-<!--Created by Laura, change as you wish-->
-
-<h1>Just giving you guys some ideas of the things you can take from backend</h1>
-<p>Can take every attribute from User (models/user)</p>
-
-<div class="col">
-    <p> <%= user.roomNumber %></p>
-    <p>Those who register with google will have automatic pfp taken from google. Those who do locally don't have that field in the DB</p>
-    <p>You may need to set a default (go to models/User and set acordingly)</p>
-
-    <p>I tried to show the pfp and birthdate but are not showing...
-        In theory, you should be able to use them since you can use username and roomNumber.
-        Basically, backend is correctly sendind the information</p>
-</div>
-
-
-<div class="container-fluid container-fluid-custom pb-5 mb-5">
+<div class="container-fluid container-fluid-custom mb-5">
     <div class="row mb-4">
         <div class="col">
-            <h1>Hello, <%= user.username %></h1>
+            <h1>Welcome to your profile, <%= user.username %></h1>
         </div>
     </div>
 
@@ -28,26 +12,38 @@
             <% }); %>
         </div>
     <% } %>
-
-
+    
     <form action="/profile/update?_method=PUT" method="POST" class="col-md-10">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-4">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="<%= user.username %>">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="roomNumber">Room Number</label>
+                    <input type="number" class="form-control" name="roomNumber" id="roomNumber" placeholder="Room Number" value="<%= user.roomNumber %>">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="Birthdate" value="<%= user.birthdate.toISOString().split('T')[0] %>">
+                </div>
+            </div>
 
-        <div class="form-group mb-4">
-            <textarea class="form-control pt-5 fs-4" name="username" id="username" rows="10" placeholder="Username"><%= user.username %></textarea>
+            <div class="col-md-6 text-center">
+                <div class="mb-3">
+                    <label for="profileImage">Profile Picture</label>
+                </div>
+                <% if (user.profileImage) { %>
+                    <img src="<%= user.profileImage %>" alt="Profile Image" class="img-fluid mb-4">
+                <% } else { %>
+                    <!-- Display a default image or some placeholder -->
+                    <img src="/img/profile_tmp.jpg" alt="Default Image" class="img-fluid mb-4" width="100" height="100">
+                <% } %>
+            </div>
         </div>
-
-        <div class="form-group mb-4">
-            <textarea class="form-control pt-5 fs-4" name="roomNumber" id="roomNumber" rows="10" placeholder="Room Number"><%= user.roomNumber %></textarea>
-        </div>
-
-        <!-- birthdate as well. atm, can only update those 3 fields. I don't think is worth doing the rest (at least not worth on BE)
-        I could also try to update profileImages, but I dont know how do the user inputs that from frontend... You can find the backend code
-        for update and see if you wanna implement that-->
-
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg">Update</button>
         </div>
-
     </form>
-    
 </div>
