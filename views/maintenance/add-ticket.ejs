@@ -49,12 +49,12 @@
     </div>
 </div>
 
-<!--modal empty form-->
-<div class="modal fade" tabindex="-1" id="emptyFormModal" data-bs-backdrop="static" data-bs-keyboard="false">
+<!--modal error form-->
+<div class="modal fade" tabindex="-1" id="errorFormModal" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <p>Please fill in all fields before submitting.</p>
+                <p>Please make sure no fields are empty and the size does not exceed 500/1000 characters for the title/text.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -69,14 +69,14 @@
         const title = document.getElementById('title').value.trim();
         const body = document.getElementById('body').value.trim();
 
-        if (title !== '' && body !== '') {
+        if (title !== '' && body !== '' &&  (!(body.length > 1000 || title.length > 500))) {
             // If the form is not empty, show the modal            
             var modal = new bootstrap.Modal(document.getElementById('addModal'));
             modal.show();
         } else {
-            // If the form is empty, show the emptyFormModal
-            var emptyFormModal = new bootstrap.Modal(document.getElementById('emptyFormModal'));
-            emptyFormModal.show();
+            // If the form is empty or the content is too big, show the errorFormModal
+            var errorFormModal = new bootstrap.Modal(document.getElementById('errorFormModal'));
+            errorFormModal.show();
         }
     });
 </script>
