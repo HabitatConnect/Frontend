@@ -1,8 +1,57 @@
-<h1>From backend, you get...</h1>
+<!-- index.ejs -->
 
-<h3>Current Year: <%= currentDate.year %></h3>
-<h3>Current Month: <%= currentDate.month %></h3>
-<h3>Current Day: <%= currentDate.day %></h3>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Calendar</title>
+    <style>
+   /* Add your CSS styles for the calendar here */
+   .calendar-container {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.calendar-nav {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Fixed table layout to ensure consistent cell sizes */
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+    width: 14.28%; /* Set a fixed width for each cell (100% / 7 days) */
+    height: 100px; /* Set a fixed height for the date box */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td.birthday {
+    background-color: #ffcccb; /* Red background for birthdays */
+}
+
+    </style>
+    
+    
+    
+</head>
+<body>
+    <!-- 
+    <h1>From backend, you get...</h1>
+
+    <h3>Current Year: <%= currentDate.year %></h3>
+    <h3>Current Month: <%= currentDate.month %></h3>
+    <h3>Current Day: <%= currentDate.day %></h3>
 
     <h2>User Birthdays:</h2>
     <ul>
@@ -16,5 +65,119 @@
             </li>
         <% }); %>
     </ul>
+-->
+<%
+const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+];
+%>
+    <h1>Calendar</h1>
+    <form id="calendarForm" method="GET" action="/calendar">
+        <input type="hidden" name="month" value="<%= currentDate.month %>" id="monthInput">
+        <input type="hidden" name="year" value="<%= currentDate.year %>" id="yearInput">
+    </form>
+    
+    <div class="calendar-container">
+        <div class="calendar-nav">
+            <a href="#" onclick="prevMonth()" class="prev-button">&#60; Prev Month</a>
+            <span class="month-display"><%= monthNames[currentDate.month - 1] %> <%= currentDate.year %></span>
+            <a href="#" onclick="nextMonth()" class="next-button">Next Month &#62;</a>
+        </div>
+        
+    <table>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let daysInMonth = new Date(currentDate.year, currentDate.month, 0).getDate(); %>
+            <% let firstDayOfWeek = new Date(currentDate.year, currentDate.month - 1, 1).getDay(); %>
+            <% let dayCounter = 1; %>
+            <% for (let i = 0; i < 6; i++) { %>
+                <tr>
+                    <% for (let j = 0; j < 7; j++) { %>
+                        <% if ((i === 0 && j < firstDayOfWeek) || dayCounter > daysInMonth) { %>
+                            <td></td>
+                        <% } else { %>
+                            <td>
+                                <div class="date-box">
+                                    <div class="date-number"><%= dayCounter %></div>
+                                    <% userBirthdays.forEach(user => { %>
+                                        <% if (user.birthdate === dayCounter && user.birthmonth === currentDate.month) { %>
+                                            <div class="birthday-text">
+                                                <div class="centered-content">
+                                                    <div class="username"><%= user.username %>'s</div>
+                                                    <div class="birthday-label">Birthday!🎂</div>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                    <% }); %>
+                                </div>
+                                <% dayCounter++; %>
+                            </td>
+                        <% } %>
+                    <% } %>
+                </tr>
+            <% } %>
+        </tbody>
+        
+    </table>
+    
+</div>
+<script>
+    
+    // JavaScript logic for navigating to the previous month
+    function prevMonth() {
+        var monthInput = document.getElementById('monthInput');
+        var yearInput = document.getElementById('yearInput');
+        
+        var currentMonth = parseInt(monthInput.value);
+        var currentYear = parseInt(yearInput.value);
 
-<p>Let me know if you need something else... Idk what do you have in mind</p>
+        if (currentMonth === 1) {
+            // If it's January, go to December of the previous year
+            currentMonth = 12;
+            currentYear--;
+        } else {
+            currentMonth--;
+        }
+
+        monthInput.value = currentMonth;
+        yearInput.value = currentYear;
+
+        document.getElementById('calendarForm').submit();
+    }
+
+    // JavaScript logic for navigating to the next month
+    function nextMonth() {
+        var monthInput = document.getElementById('monthInput');
+        var yearInput = document.getElementById('yearInput');
+        
+        var currentMonth = parseInt(monthInput.value);
+        var currentYear = parseInt(yearInput.value);
+
+        if (currentMonth === 12) {
+            // If it's December, go to January of the next year
+            currentMonth = 1;
+            currentYear++;
+        } else {
+            currentMonth++;
+        }
+
+        monthInput.value = currentMonth;
+        yearInput.value = currentYear;
+
+        document.getElementById('calendarForm').submit();
+    }
+</script>
+
+</body>
+</html>

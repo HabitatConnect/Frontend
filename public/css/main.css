@@ -242,3 +242,75 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid #d3d3d3;
 }
   
+
+.prev-button, .next-button {
+  background-color: #007BFF;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.prev-button:hover, .next-button:hover {
+  background-color: #0056b3;
+}
+
+.month-display {
+  font-size: 20px; /* Adjust the font size as needed */
+  font-weight: bold; /* Add bold styling if desired */
+  color: #333; /* Text color for the month display */
+  margin: 0 10px; /* Adjust the margin as needed */
+}
+
+
+.birthday-text {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+  margin-top: auto; /* Push the birthday message to the bottom */
+}
+
+
+.username {
+  font-weight: bold;
+  font-size: 15px; /* Adjust the font size for the username */
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 100%;
+}
+/* CSS for date-box and its child elements */
+.date-box {
+  position: relative;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.date-number {
+  /* Style for the date number */
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+.birthday-text {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+  margin-top: auto;
+}
+.birthday-label {
+  font-size: 15px; /* Adjust the font size for "Birthday!" */
+  color: red; /* You can customize the color as desired */
+}
