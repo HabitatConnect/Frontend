@@ -17,4 +17,4 @@ The frontend functionality is built using a combination of technologies:
 The source code for the frontend can be found in the \HabitatConnect\Frontend directory.
 
 ## Frontend Architecture
-![Frontend Files](https://gyazo.com/37439e2063e428abc414c0852c228b46)
+![Frontend Files](https://i.gyazo.com/37439e2063e428abc414c0852c228b46.png)
