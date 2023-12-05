@@ -14,9 +14,9 @@ The frontend functionality is built using a combination of technologies:
 - Bootstrap CSS framework enhances responsiveness and simplifies design with pre-built components.
 - Responsive design principles ensure compatibility across various devices, making it easy for users to interact with announcements, submit maintenance requests, and more.
 
-## Frontend Architecture
-![Frontend Files](https://i.gyazo.com/37439e2063e428abc414c0852c228b46.png)
+# Frontend Architecture
+![image](https://github.com/HabitatConnect/Frontend/assets/124285890/6554385b-9522-4d47-a089-4cfba9f361da)
 
 # Backend and Documentation
 
-Don't forget to check out the HabitatConnect [Backend](https://github.com/HabitatConnect/Backend) and [Documentation](https://github.com/HabitatConnect/Documentation) repositories!
+Don't forget to check out the Habitat Connect [Backend](https://github.com/HabitatConnect/Backend) and [Documentation](https://github.com/HabitatConnect/Documentation) repositories!
